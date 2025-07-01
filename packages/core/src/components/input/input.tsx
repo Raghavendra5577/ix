@@ -161,6 +161,11 @@ export class Input implements IxInputFieldComponent<string> {
    */
   @Event() ixBlur!: EventEmitter<void>;
 
+  /**
+   * Event emitted when the native input emits a change event.
+   */
+  @Event() ixChange!: EventEmitter<Event>;
+
   @State() isInvalid = false;
   @State() isValid = false;
   @State() isInfo = false;
@@ -316,6 +321,7 @@ export class Input implements IxInputFieldComponent<string> {
                 this.touched = true;
               }}
               ariaAttributes={inputAria}
+              onChange={(event: Event) => this.ixChange.emit(event)}
             ></InputElement>
             <SlotEnd
               slotEndRef={this.slotEndRef}

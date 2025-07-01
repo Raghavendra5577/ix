@@ -85,6 +85,7 @@ export function InputElement(
     updateFormInternalValue: (value: string) => void;
     onBlur: () => void;
     ariaAttributes?: A11yAttributes;
+    onChange?: (event: Event) => void;
   }>
 ) {
   return (
@@ -114,6 +115,7 @@ export function InputElement(
         props.valueChange(target.value);
       }}
       onBlur={() => props.onBlur()}
+      onChange={props.onChange}
       {...props.ariaAttributes}
     ></input>
   );
